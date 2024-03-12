@@ -63,15 +63,18 @@
         {
             string text = File.ReadAllText(filePath);
 
-            string selectedOption = await DisplayActionSheet("Wybierz Działanie", "Anuluj", null, "Wyświetl klasę", "Edytuj klasę", "Usuń klasę");
+            string selectedOption = await DisplayActionSheet("Wybierz Działanie", "Anuluj", null, "Wyświetl klasę", "Edytuj klasę","Losuj ucznia", "Usuń klasę");
 
             switch (selectedOption)
             {
                 case "Wyświetl klasę":
-                    DisplayAlert("Lista uczniów", $"Uczniowie klasy '{Path.GetFileNameWithoutExtension(filePath)}':\n{text}", "OK");
+                    DisplayAlert("Lista uczniow", $"Uczniowie klasy '{Path.GetFileNameWithoutExtension(filePath)}':\n{text}", "OK");
                     break;
                 case "Edytuj klasę":
                     await Navigation.PushAsync(new NewPage1(filePath));
+                    break;
+                case "Losuj ucznia":
+                    ShowRandomStudent(filePath);
                     break;
                 case "Usuń klasę":
                     Usun(filePath);
@@ -91,6 +94,23 @@
             else
             {
                 DisplayAlert("ERROR!", "Żądany plik nie został znaleziony!", "OK");
+            }
+        }
+        private async void ShowRandomStudent(string filePath)
+        {
+            List<string> lines = File.ReadAllLines(filePath).ToList();
+
+            if (lines.Count > 0)
+            {
+                Random random = new Random();
+                int randomIndex = random.Next(0, lines.Count);
+                string randomStudent = lines[randomIndex];
+
+                await DisplayAlert("Uczeń do pytania", randomStudent, "OK");
+            }
+            else
+            {
+                await DisplayAlert("Brak uczniów", "W klasie nie ma uczniów do losowania!", "OK");
             }
         }
     }

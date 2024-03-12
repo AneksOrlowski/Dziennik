@@ -20,11 +20,7 @@ x:Name="stackLayout">
     Text="Dodaj Ucznia"
     Clicked="OnNewStudent"
     HorizontalOptions="CenterAndExpand"/>
-        <Button
-     x:Name="LosujUcznia"
-     Text="Losuj ucznia"
-     Clicked="ShowRandomStudent"
-     HorizontalOptions="CenterAndExpand"/>
+    
         <Button
     x:Name="ToMainPage"
     Text="Wróć"

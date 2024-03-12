@@ -1,4 +1,6 @@
-﻿namespace Dziennik
+﻿[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
+namespace Dziennik
 {
     public partial class App : Application
     {
@@ -6,7 +8,10 @@
         {
             InitializeComponent();
 
+            System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+
             MainPage = new AppShell();
         }
     }
 }
+
