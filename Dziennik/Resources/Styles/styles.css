@@ -1,0 +1,24 @@
+.Headbar {
+    background-color: forestgreen;
+    font-family: Impact;
+    color: #F0F06D;
+    font-size: large;
+}
+
+#load {
+    background-color: deeppink;
+    font-family: Impact;
+    color: #F0F06D;
+    font-size: large;
+}
+
+^StackLayout {
+    background-color: #4cff00;
+}
+
+^Button {
+    background-color: deeppink;
+    font-family: Impact;
+    color: #693162;
+    font-size: medium;
+}
